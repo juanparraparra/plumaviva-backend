@@ -1,0 +1,11 @@
+# Copiar a /etc/caddy/Caddyfile y reiniciar:  sudo systemctl restart caddy
+# Caddy obtiene y renueva solo el certificado HTTPS (puertos 80 y 443 abiertos).
+# 135-148-46-133.sslip.io resuelve a la IP de la VPS; si más adelante tiene dominio propio, cámbielo aquí
+# y en public/config.json del front.
+135-148-46-133.sslip.io {
+  encode gzip
+  request_body {
+    max_size 30MB
+  }
+  reverse_proxy localhost:3000
+}

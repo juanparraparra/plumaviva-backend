@@ -1,0 +1,7 @@
+node_modules
+.env
+.correos-dev.jsonl
+.env.*
+!.env.example
+node_modules
+logs
