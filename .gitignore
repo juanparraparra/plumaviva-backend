@@ -1,7 +1,10 @@
 node_modules
 .env
 .correos-dev.jsonl
+<<<<<<< HEAD
 .env.*
 !.env.example
 node_modules
 logs
+=======
+>>>>>>> cac9179711e14a75463ffc509095e21b28062b05

@@ -40,6 +40,7 @@ app.use('/api', requiereSesion, require('./routes/otros'));
 app.use('/api', (_req, res) => res.status(404).json({ error: 'Ruta no encontrada' }));
 
 // ---------- Capa 1: front Angular compilado (si existe) y front de referencia ----------
+<<<<<<< HEAD
 // En producción (front en Firebase Hosting) la VPS solo expone la API: no se sirve ningún front desde aquí.
 if (!produccion) {
   const distAngular = path.join(__dirname, '..', '..', 'PlumaViva_Angular_Final', 'plumaviva', 'dist', 'plumaviva', 'browser');
@@ -51,6 +52,14 @@ if (!produccion) {
 } else {
   app.get('/', (_req, res) => res.json({ servicio: 'PlumaViva API', estado: 'activo' }));
 }
+=======
+const distAngular = path.join(__dirname, '..', '..', 'PlumaViva_Angular_Final', 'plumaviva', 'dist', 'plumaviva', 'browser');
+if (fs.existsSync(path.join(distAngular, 'index.html'))) {
+  app.use(express.static(distAngular));
+  console.log('✔ Front Angular encontrado en dist: se sirve en el mismo origen.');
+}
+app.use(express.static(path.join(__dirname, '..', 'public')));
+>>>>>>> cac9179711e14a75463ffc509095e21b28062b05
 
 // Errores: los de base de datos se explican; no se filtran detalles internos
 const ERRORES_BD = ['ECONNREFUSED', 'ENOTFOUND', 'ETIMEDOUT', 'ER_BAD_DB_ERROR', 'ER_NO_SUCH_TABLE', 'ER_BAD_FIELD_ERROR', 'ER_ACCESS_DENIED_ERROR', 'PROTOCOL_CONNECTION_LOST'];
